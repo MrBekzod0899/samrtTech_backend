@@ -1,0 +1,43 @@
+<div class="page-sidebar">
+  <div class="logo-box"><a href="#" class="logo-text">{{user.login}}</a><a
+      href="#"
+      id="sidebar-close"
+    ><i class="material-icons">close</i></a>
+    <a href="#" id="sidebar-state"><i class="material-icons">adjust</i><i
+        class="material-icons compact-sidebar-icon"
+      >panorama_fish_eye</i></a></div>
+  <div class="page-sidebar-inner slimscroll">
+    <ul class="accordion-menu">
+      <li class="sidebar-title">
+        Admin
+      </li>
+      <li {{#if isHome}} class="active-page" {{/if}}>
+        <a href="/" {{#if isHome}} class="active" {{/if}}><i
+            class="material-icons-outlined"
+          >dashboard</i>Bosh sahifa</a>
+      </li>
+      <li {{#if isCategory}} class="active-page" {{/if}} >
+        <a href="/category" {{#if isCategory}} class="active" {{/if}} ><i
+            class="material-icons-outlined"
+          >category</i>Category</a>
+      </li>
+      <li {{#if isAttribute}} class="active-page" {{/if}} >
+        <a href="/attribute" {{#if isAttribute}} class="active" {{/if}} ><i
+            class="material-icons-outlined"
+          >grid_view</i>Attribute</a>
+      </li>
+      <li {{#if isProject}} class="active-page" {{/if}}>
+        <a href="/project" {{#if isProject}} class="active" {{/if}}>
+        <i class="material-icons-outlined">assignment</i>Project</a>
+      </li>
+      <li {{#if isFaqs}} class="active-page" {{/if}}>
+        <a href="/faqs" {{#if isFaqs}} class="active" {{/if}} ><i
+            class="material-icons-outlined"
+          >question_answer</i>Faqs</a>
+      </li>
+      <li {{#if isSetting}} class="active-page" {{/if}}>
+        <a {{#if isSetting}} class="active" {{/if}} href="/settings"><i class="material-icons">settings</i>Settings</a>
+      </li>    
+    </ul>
+  </div>
+</div>
