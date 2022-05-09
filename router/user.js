@@ -43,6 +43,7 @@ router.post('/login',async(req,res)=>{
     else{
         req.flash('error','bunday logindagi username mavjud emas')
         res.redirect('/user/login')
+        
     }
 
 })
@@ -54,6 +55,9 @@ router.get('/register',async(req,res)=>{
             title:'Register'
         }
     )
+})
+router.get('/logout',async(req,res)=>{
+    res.redirect('/')
 })
 
 router.post('/register',async(req,res)=>{

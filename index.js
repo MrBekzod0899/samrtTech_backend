@@ -7,7 +7,7 @@ const flash=require('connect-flash')
 const csrf=require('csurf')
 const varMid=require('./middleware/var')
 const MongoStore=require('connect-mongodb-session')(session)
-
+const cors=require('cors')
 
 const hbs=mainHbs.create({
     defaultLayout:'admin/main',
@@ -15,15 +15,20 @@ const hbs=mainHbs.create({
 })
 //handlebars connection\\
 
+// var corsOptions={
+//     origin:'http://localhost:3000/',
+//     optionsSuccessStatus:200
+// }
 app.engine('hbs',hbs.engine)
 app.set('view engine','hbs')
 app.set('views','views')
+
 
 app.use(express.urlencoded({extended:true}))
 app.use(express.static('node_modules'))
 app.use(express.static('public'))
 app.use('/uploads',express.static('uploads'))
-
+app.use(cors())
 
 const mongoURL='mongodb://127.0.0.1:27017/smarttech'
 const store=MongoStore({

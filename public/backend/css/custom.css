@@ -1,1 +1,29 @@
 /* Write your custom CSS here */
+
+.category-table tr {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.category-table tr th,
+.category-table tr td {
+    border: unset !important;
+}
+
+.category-table tr:last-child {
+    margin-right: auto;
+}
+
+.attributes.bycat {
+    transition: 0.2s;
+    padding: 10px 0;
+    border-bottom: 1px solid #e8e8e8;
+    border-top: 1px solid #e8e8e8;
+    margin: 10px 0;
+}
+
+#editorText {
+    resize: none !important;
+}

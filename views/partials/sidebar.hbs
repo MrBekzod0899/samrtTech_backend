@@ -21,14 +21,19 @@
             class="material-icons-outlined"
           >category</i>Category</a>
       </li>
-      <li {{#if isAttribute}} class="active-page" {{/if}} >
+      <li {{#if isSlider}} class="active-page" {{/if}} >
+        <a href="/slider" {{#if isSlider}} class="active" {{/if}} ><i
+            class="material-icons-outlined"
+          >slideshow</i>Slider</a>
+      </li>
+      <li {{#if isAttribute}}   class="active-page" {{/if}} >
         <a href="/attribute" {{#if isAttribute}} class="active" {{/if}} ><i
             class="material-icons-outlined"
           >grid_view</i>Attribute</a>
       </li>
       <li {{#if isProject}} class="active-page" {{/if}}>
-        <a href="/project" {{#if isProject}} class="active" {{/if}}>
-        <i class="material-icons-outlined">assignment</i>Project</a>
+        <a href="/product" {{#if isProdcut}} class="active" {{/if}}>
+        <i class="material-icons-outlined">shopping_basket</i>Products</a>
       </li>
       <li {{#if isFaqs}} class="active-page" {{/if}}>
         <a href="/faqs" {{#if isFaqs}} class="active" {{/if}} ><i

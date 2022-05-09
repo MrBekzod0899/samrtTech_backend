@@ -10,7 +10,7 @@ const storage=multer.diskStorage({
     }
 })
 
-const arrTypes=['image/jpg','image/png','image/scg+xml','image/jpeg','image/webp']
+const arrTypes=['image/svg','image/jpg','image/png','image/svg+xml','image/jpeg','image/webp']
 
 const fileFilter=(req,file,cb)=>{
     if(arrTypes.includes(file.mimetype)){
