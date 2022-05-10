@@ -15,7 +15,6 @@ router.get('/login',async(req,res)=>{
 
 router.post('/login',async(req,res)=>{
     let {username,password}=req.body
-    console.log(req.body)
     let checkUser=await User.findOne({username}).lean()
     if(checkUser){
         let compressPassword=await bcrypt.compare(password,checkUser.password)

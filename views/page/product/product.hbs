@@ -18,7 +18,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        {{#each newAttribute}}
+                        {{#each newProducts}}
                         <tr>
                             <th scope="row">{{@index}}</th>
                             <td>
@@ -28,12 +28,12 @@
                                 <span>{{category.title}}</span>
                             </td>
                             <td style="cursor: pointer;">
-                                <a href="/attribute/status/{{_id}}" >{{{status}}}</a>
+                                <a href="/product/status/{{_id}}" >{{{status}}}</a>
                             </td>                            
                             <td>{{order}}</td>
                             <td>
-                                <a class="btn btn-warning" href="/attribute/get/{{_id}}" data-toggle="modal" data-target="#editModal" onclick="edit('{{_id}}')" ><i class="fas fa-edit"></i></a>
-                                <a class="btn btn-danger" href="/attribute/delete/{{_id}}" onclick="return confirm('Qaroringiz aniqmi??')"><i class="fas fa-times"></i></a>
+                                <a class="btn btn-warning" href="/product/get/{{_id}}" data-toggle="modal" data-target="#editModal" onclick="edit('{{_id}}')" ><i class="fas fa-edit"></i></a>
+                                <a class="btn btn-danger" href="/product/delete/{{_id}}" onclick="return confirm('Qaroringiz aniqmi??')"><i class="fas fa-times"></i></a>
                             </td>
                         </tr>
                         {{/each}}
@@ -53,7 +53,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="/attribute?_csrf={{csrf}}"  method="post" enctype="multipart/form-data" name="productsList">
+                <form action="/product?_csrf={{csrf}}"   method="post" enctype="multipart/form-data" name="productsList">
                 <input type="hidden" name="_csrf" value="{{csrf}}" />
                      <div class="container">
                         <div class="row">
@@ -66,7 +66,7 @@
                             </div>
                             <div class="col-3">
                                 <div class="form-group">
-                                    <label for="inputState">State</label>
+                                    <label for="inputState">Category</label>
                                      <select name="category" onchange='getattribute(`${event.target.value}`)' id="inputState" class="form-control custom-select">
                                             <option class="p-2 m-2" selected disabled>Choose Category...</option>
                                             {{#each categories}}
@@ -78,7 +78,7 @@
                             
                             <div class="col-3">
                                 <div class="form-group">
-                                    <label for="order">Price</label>
+                                    <label for="price">Price</label>
                                     <input type="number" class="form-control"  name="price" placeholder="narxini kiriting" />
                                 </div>
                             </div>
@@ -89,15 +89,14 @@
                                 </div>
                             </div>
                        </div>
+                       <input type="hidden" name="attributes"/>
                        <div class="attributes row">
-
                        </div>
                        <div class="row">
                             <div class="col-12">
                                 <div class="form-group">
                                     <label for="text">Qisqacha matni</label>
                                     <textarea  class="form-control" id='editorText'  name="text" placeholder="mahsulot haqida qisqacha ma'lumot kiriting"></textarea>
-
                                 </div>
                             </div>
                             <div class="col-3">
@@ -112,6 +111,20 @@
                                     <input type="checkbox" class="custom-control-input" value="1" name="order"
                                         checked />
                                     <label class="custom-control-label" for="order">Order</label>
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="custom-control custom-checkbox form-group">
+                                    <input type="checkbox" class="custom-control-input" value="1" name="top"
+                                        checked />
+                                    <label class="custom-control-label" for="top">Top</label>
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="custom-control custom-checkbox form-group">
+                                    <input type="checkbox" class="custom-control-input" value="1" name="news"
+                                        checked />
+                                    <label class="custom-control-label" for="isNew">isNew</label>
                                 </div>
                             </div>
                        </div>
@@ -165,7 +178,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="/attribute/save?_csrf={{csrf}}" name="editForm"  method="post">
+                <form action="/product/save?_csrf={{csrf}}" name="editForm" enctype="multipart/form-data"  method="post">
                     <div class="form-group">
                         <input type="hidden"  name="_id" value="" />
                         <input type="hidden"  name="_csrf" value="{{csrf}}" />
@@ -207,10 +220,9 @@
 <script>
     let editform=document.forms.editForm
     let image=document.getElementById('image')
-    console.log(image)
     function edit(id){
         console.log(id)
-        fetch(`http://localhost:3003/attribute/get/${id}`)
+        fetch(`http://localhost:3003/product/get/${id}`)
         .then(res=>res.json())
         .then(data=>{
             console.log(data)
@@ -250,10 +262,22 @@
     
     //  submit 
 
-    let   productsList=document.querySelector('.productsList')
+    let   productsList=document.forms.productsList
 
-    productsList.addEventListener('submit',()=>{
-
+    productsList.addEventListener('submit',(e)=>{
+        e.preventDefault()
+        let data=[]
+        let inputValue=document.querySelectorAll('.attributes input')
+        inputValue.forEach(atr=>{
+            data.push(
+                {
+                    attribut:atr.getAttribute('data-id'),
+                    value:atr.value
+                }
+            )
+        })
+        console.log(data)
+        productsList.attributes.value=JSON.stringify(data)
+        productsList.submit()
     }) 
-
 </script>

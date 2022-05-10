@@ -20,7 +20,6 @@ router.post('/',upload.single('Image'),async(req,res)=>{
     if(req.file){
         Image=req.file.path
     }
-    console.log(req.file)
     let sliderData=await new Slider({title,status,text,Image})
     await sliderData.save()
     res.redirect('/slider')
@@ -29,7 +28,6 @@ router.post('/',upload.single('Image'),async(req,res)=>{
 
 router.get('/delete/:id',async(req,res)=>{
     let _id=req.params.id;
-    console.log(_id)
     await Slider.findOneAndDelete({_id})
     res.redirect('/slider')
     
@@ -52,7 +50,6 @@ router.get('/get/:id',async(req,res)=>{
 
 router.post('/save',upload.single('Image'),async(req,res)=>{
     let {_id,title,text,status}=req.body
-    console.log(req.body)
     status=status || 0
     let Image;
     if(req.file){

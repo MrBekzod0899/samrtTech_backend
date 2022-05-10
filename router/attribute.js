@@ -24,7 +24,6 @@ router.get('/', async(req, res) => {
 
 router.post('/', async(req, res) => {
     let { title, order, status, category } = req.body
-    console.log(category)
     status = status || 0
     let newAttributes = await new Attributes({ title, order, status, category }).populate('category')
     await newAttributes.save()
@@ -34,7 +33,6 @@ router.post('/', async(req, res) => {
 
 router.get('/delete/:id', async(req, res) => {
     let _id = req.params.id;
-    console.log(_id)
     await Attributes.findOneAndDelete({ _id })
     res.redirect('/attribute')
 })
@@ -56,7 +54,6 @@ router.get('/get/:id', async(req, res) => {
 
 router.post('/save', async(req, res) => {
     let { _id, title, order, status, category } = req.body
-    console.log(req.body)
     status = status || 0
     await Attributes.findByIdAndUpdate(_id, { title, order, status, category })
     res.redirect('/attribute')

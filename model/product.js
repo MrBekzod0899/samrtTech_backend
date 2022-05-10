@@ -10,6 +10,14 @@ const product = new Schema({
     sale: Number,
     text: String,
     view: Number,
+    news: {
+        type: Number,
+        default: 0
+    },
+    top: {
+        type: Number,
+        default: 0
+    },
     order: {
         type: Number,
         default: 0

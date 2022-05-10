@@ -27,7 +27,6 @@ router.post('/',upload.single('Image'),async(req,res)=>{
     if(req.file){
         Image=req.file.path
     }
-    console.log(req.file)
     let newCategory=await new Category({title,order,status,Image})
     await newCategory.save()
     res.redirect('/category')
@@ -36,7 +35,6 @@ router.post('/',upload.single('Image'),async(req,res)=>{
 
 router.get('/delete/:id',async(req,res)=>{
     let _id=req.params.id;
-    console.log(_id)
     await Category.findOneAndDelete({_id})
     res.redirect('/category')
     
@@ -59,7 +57,6 @@ router.get('/get/:id',async(req,res)=>{
 
 router.post('/save',upload.single('Image'),async(req,res)=>{
     let {_id,title,order,status}=req.body
-    console.log(req.body)
     status=status || 0
     let Image;
     if(req.file){

@@ -12,25 +12,61 @@ router.get('/', async(req, res) => {
     res.render('page/product/product', {
         title: 'Our Products',
         isProduct: true,
-        categories
+        categories,
+        newProducts
     })
 })
 
-router.post('/', async(req, res) => {
-    let { title, order, status, category } = req.body
-    console.log(category)
+router.post('/', upload.fields([
+    { name: 'img1', maxCount: 1 },
+    { name: 'img2', maxCount: 1 },
+    { name: 'img3', maxCount: 1 },
+    { name: 'img4', maxCount: 1 },
+]), async(req, res) => {
+    let { title, price, sale, category, attributes, text, order, top, status, news } = req.body
+    let photos = []
+    if (req.files) {
+        let { img1, img2, img3, img4 } = req.files
+        if (img1) {
+            photos.push(img1[0].path)
+        }
+        if (img2) {
+            photos.push(img2[0].path)
+        }
+        if (img3) {
+            photos.push(img3[0].path)
+        }
+        if (img4) {
+            photos.push(img4[0].path)
+        }
+    }
     status = status || 0
-    let newProduct = await new Product({ title, order, status, category }).populate('category')
+    order = order || 0
+    news = news || 0
+    top = top || 0
+    attributes = JSON.parse(attributes)
+    let newProduct = await new Product({
+        title,
+        price,
+        sale,
+        text,
+        order,
+        status,
+        top,
+        news,
+        category,
+        attributes,
+        photos
+    }).populate('category')
     await newProduct.save()
-    res.redirect('/attribute')
+    res.redirect('/product')
 })
 
 
 router.get('/delete/:id', async(req, res) => {
     let _id = req.params.id;
-    console.log(_id)
     await Product.findOneAndDelete({ _id })
-    res.redirect('/attribute')
+    res.redirect('/product')
 })
 
 router.get('/status/:id', async(req, res) => {
@@ -38,7 +74,7 @@ router.get('/status/:id', async(req, res) => {
     let statusProduct = await Product.findById(_id).lean()
     statusProduct.status = statusProduct.status == 1 ? 0 : 1
     await Product.findByIdAndUpdate(_id, statusProduct)
-    res.redirect('/attribute')
+    res.redirect('/product')
 })
 
 
@@ -50,8 +86,6 @@ router.get('/get/:id', async(req, res) => {
 
 router.post('/save', async(req, res) => {
     let { _id, title, order, status, category } = req.body
-
-    console.log(req.body)
     status = status || 0
     await Product.findByIdAndUpdate(_id, { title, order, status, category })
     res.redirect('/product')
