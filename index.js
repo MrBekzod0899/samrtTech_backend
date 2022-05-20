@@ -51,11 +51,7 @@ app.use(csrf())
 app.use(flash())
 app.use(varMid)
 
-
-
-
 let routerList=require('./router')
-
 
 app.use(routerList)
 

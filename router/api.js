@@ -24,10 +24,15 @@ router.get('/getcat/:id', async(req, res) => {
 router.get('/getproducts/:id', async(req, res) => {
         let Products = await Product.find({ category: req.params.id }).populate('category').populate('attributes.attribut').lean()
         res.send(Products)
-    })
-    //get product
+})
 router.get('/getproducts', async(req, res) => {
     let Products = await Product.find().populate('category').populate('attributes.attribut').lean()
     res.send(Products)
+})
+    //get product
+router.get('/product/:id', async(req, res) => {
+    let Products = await Product.find({_id:req.params.id}).populate('category').populate('attributes.attribut').lean()
+    res.send(Products)
+    console.log(Products)
 })
 module.exports = router
