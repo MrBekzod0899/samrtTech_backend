@@ -52,11 +52,8 @@ app.use(flash())
 app.use(varMid)
 
 let routerList=require('./router')
-
 app.use(routerList)
-
-
-const PORT=3003
+const PORT=3000
 async function dev(){
     try{
         await mongoose.connect(mongoURL,{
@@ -70,5 +67,4 @@ async function dev(){
          console.log(error)
     }
 }
-
 dev()
