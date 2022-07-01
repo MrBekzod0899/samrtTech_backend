@@ -222,7 +222,7 @@
     let image=document.getElementById('image')
     function edit(id){
         console.log(id)
-        fetch(`http://localhost:3003/product/get/${id}`)
+        fetch(`http://localhost:5000/product/get/${id}`)
         .then(res=>res.json())
         .then(data=>{
             console.log(data)
@@ -260,7 +260,6 @@
         })
     }  
     
-    //  submit 
 
     let   productsList=document.forms.productsList
 

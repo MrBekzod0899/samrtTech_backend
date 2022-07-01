@@ -1,6 +1,8 @@
 {
-    "files.associations": {
-        "*.jsx": "javascriptreact",
-        "cmath": "cpp"
-    }
+  "files.associations": {
+    "*.jsx": "javascriptreact",
+    "cmath": "cpp"
+  },
+  "editor.fontSize": 20,
+  "editor.scrollbar.horizontalScrollbarSize": 16
 }

@@ -15,7 +15,6 @@ router.get('/slider', async(req, res) => {
     res.send(sliders)
 })
 
-
 router.get('/getcat/:id', async(req, res) => {
     let Attributes = await Attribute.find({ category: req.params.id }).lean()
     res.send(Attributes)
@@ -32,7 +31,11 @@ router.get('/getproducts', async(req, res) => {
     //get product
 router.get('/product/:id', async(req, res) => {
     let Products = await Product.find({_id:req.params.id}).populate('category').populate('attributes.attribut').lean()
-    res.send(Products)
-    console.log(Products)
+    let ProductAll = await Product.find({_id:{$ne:req.params.id}}).populate('category').populate('attributes.attribut').lean()
+    let newProducts=[]
+    newProducts.push(Products)
+    newProducts.push(ProductAll)
+    res.send(newProducts)
 })
+
 module.exports = router

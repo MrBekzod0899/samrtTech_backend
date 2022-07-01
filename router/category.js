@@ -16,8 +16,6 @@ router.get('/',async(req,res)=>{
         title:'Category',
         categories
     })
-    
-
 })
 
 router.post('/',upload.single('Image'),async(req,res)=>{

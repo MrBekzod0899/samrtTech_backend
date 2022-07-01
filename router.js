@@ -11,7 +11,6 @@ const user=require('./router/user')
 const apirouter=require('./router/api')
 const sliderrouter=require('./router/slider')
 
-
 router.use('/',pagerouter)
 router.use('/api',apirouter)
 router.use('/category',category)

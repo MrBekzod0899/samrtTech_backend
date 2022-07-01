@@ -8,7 +8,6 @@ const upload = require('../middleware/file')
 router.get('/', async(req, res) => {
     let categories = await Category.find({ status: 1 }).lean()
     let newProducts = await Product.find().populate('category').populate('attributes.attribut').lean()
-        // let Attributes= await Attribute.find().populate('category').lean()
     res.render('page/product/product', {
         title: 'Our Products',
         isProduct: true,
