@@ -12,36 +12,36 @@
         Admin
       </li>
       <li {{#if isHome}} class="active-page" {{/if}}>
-        <a href="/" {{#if isHome}} class="active" {{/if}}><i
+        <a href="/admin" {{#if isHome}} class="active" {{/if}}><i
             class="material-icons-outlined"
           >dashboard</i>Bosh sahifa</a>
       </li>
       <li {{#if isCategory}} class="active-page" {{/if}} >
-        <a href="/category" {{#if isCategory}} class="active" {{/if}} ><i
+        <a href="/admin/category" {{#if isCategory}} class="active" {{/if}} ><i
             class="material-icons-outlined"
           >category</i>Category</a>
       </li>
       <li {{#if isSlider}} class="active-page" {{/if}} >
-        <a href="/slider" {{#if isSlider}} class="active" {{/if}} ><i
+        <a href="/admin/slider" {{#if isSlider}} class="active" {{/if}} ><i
             class="material-icons-outlined"
           >slideshow</i>Slider</a>
       </li>
       <li {{#if isAttribute}}   class="active-page" {{/if}} >
-        <a href="/attribute" {{#if isAttribute}} class="active" {{/if}} ><i
+        <a href="/admin/attribute" {{#if isAttribute}} class="active" {{/if}} ><i
             class="material-icons-outlined"
           >grid_view</i>Attribute</a>
       </li>
       <li {{#if isProject}} class="active-page" {{/if}}>
-        <a href="/product" {{#if isProdcut}} class="active" {{/if}}>
+        <a href="/admin/product" {{#if isProdcut}} class="active" {{/if}}>
         <i class="material-icons-outlined">shopping_basket</i>Products</a>
       </li>
       <li {{#if isFaqs}} class="active-page" {{/if}}>
-        <a href="/faqs" {{#if isFaqs}} class="active" {{/if}} ><i
+        <a href="/admin/faqs" {{#if isFaqs}} class="active" {{/if}} ><i
             class="material-icons-outlined"
           >question_answer</i>Faqs</a>
       </li>
       <li {{#if isSetting}} class="active-page" {{/if}}>
-        <a {{#if isSetting}} class="active" {{/if}} href="/settings"><i class="material-icons">settings</i>Settings</a>
+        <a {{#if isSetting}} class="active" {{/if}} href="/admin/settings"><i class="material-icons">settings</i>Settings</a>
       </li>    
     </ul>
   </div>
