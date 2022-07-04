@@ -13,12 +13,7 @@ const hbs=mainHbs.create({
     defaultLayout:'admin/main',
     extname:'hbs'
 })
-//handlebars connection\\
 
-// var corsOptions={
-//     origin:'http://localhost:3000/',
-//     optionsSuccessStatus:200
-// }
 app.engine('hbs',hbs.engine)
 app.set('view engine','hbs')
 app.set('views','views')
