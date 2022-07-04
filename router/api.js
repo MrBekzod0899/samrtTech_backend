@@ -38,4 +38,9 @@ router.get('/product/:id', async(req, res) => {
     res.send(newProducts)
 })
 
+router.post('/example',async(req,res)=>{
+    let {name,text}=req.body
+    console.log(req.body)
+})
+
 module.exports = router

@@ -6,7 +6,6 @@ router.get('/',async(req,res)=>{
     res.render('index',{
         title:'Smart Technology',
         isHome:true,
-        layout:'admin'
     })
 })
 
