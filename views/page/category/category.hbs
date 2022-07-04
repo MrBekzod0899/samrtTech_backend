@@ -27,12 +27,12 @@
                                 <span>{{title}}</span>
                             </td>
                             <td style="cursor: pointer;">
-                                <a href="/category/status/{{_id}}" >{{{status}}}</a>
+                                <a href="/admin/category/status/{{_id}}" >{{{status}}}</a>
                             </td>                            
                             <td>{{order}}</td>
                             <td>
-                                <a class="btn btn-warning" href="/category/get/{{_id}}" data-toggle="modal" data-target="#editModal" onclick="edit('{{_id}}')" ><i class="fas fa-edit"></i></a>
-                                <a class="btn btn-danger" href="/category/delete/{{_id}}" onclick="return confirm('Qaroringiz aniqmi??')"><i class="fas fa-times"></i></a>
+                                <a class="btn btn-warning" href="/admin/category/get/{{_id}}" data-toggle="modal" data-target="#editModal" onclick="edit('{{_id}}')" ><i class="fas fa-edit"></i></a>
+                                <a class="btn btn-danger" href="/admin/category/delete/{{_id}}" onclick="return confirm('Qaroringiz aniqmi??')"><i class="fas fa-times"></i></a>
                             </td>
                         </tr>
                         {{/each}}
@@ -54,7 +54,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="/category?_csrf={{csrf}}" enctype="multipart/form-data" method="post">
+                <form action="/admin/category?_csrf={{csrf}}" enctype="multipart/form-data" method="post">
                 <input type="hidden" name="_csrf" value="{{csrf}}" />
                     <div class="form-group">
                         <input type="text" name="title" class="form-control" 

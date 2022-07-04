@@ -5,7 +5,8 @@ const router=Router()
 router.get('/',async(req,res)=>{
     res.render('index',{
         title:'Smart Technology',
-        isHome:true
+        isHome:true,
+        layout:'admin'
     })
 })
 

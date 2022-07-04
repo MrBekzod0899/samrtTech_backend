@@ -30,12 +30,12 @@
                                 <span>{{category.title}}</span>
                             </td>
                             <td style="cursor: pointer;">
-                                <a href="/attribute/status/{{_id}}" >{{{status}}}</a>
+                                <a href="admin/attribute/status/{{_id}}" >{{{status}}}</a>
                             </td>                            
                             <td>{{order}}</td>
                             <td>
-                                <a class="btn btn-warning" href="/attribute/get/{{_id}}" data-toggle="modal" data-target="#editModal" onclick="edit('{{_id}}')" ><i class="fas fa-edit"></i></a>
-                                <a class="btn btn-danger" href="/attribute/delete/{{_id}}" onclick="return confirm('Qaroringiz aniqmi??')"><i class="fas fa-times"></i></a>
+                                <a class="btn btn-warning" href="admin/attribute/get/{{_id}}" data-toggle="modal" data-target="#editModal" onclick="edit('{{_id}}')" ><i class="fas fa-edit"></i></a>
+                                <a class="btn btn-danger" href="admin/attribute/delete/{{_id}}" onclick="return confirm('Qaroringiz aniqmi??')"><i class="fas fa-times"></i></a>
                             </td>
                         </tr>
                         {{/each}}
@@ -57,7 +57,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="/attribute?_csrf={{csrf}}"  method="post">
+                <form action="admin/attribute?_csrf={{csrf}}"  method="post">
                 <input type="hidden" name="_csrf" value="{{csrf}}" />
                     <div class="form-group">
                         <label for="inputState">State</label>
